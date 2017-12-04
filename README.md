@@ -1,4 +1,4 @@
-# UDP-socket
+# Python UDP-socket
 Simple UDP server/client socket communication
 
 ## Introduction
