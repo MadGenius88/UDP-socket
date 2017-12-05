@@ -11,6 +11,7 @@ s.bind( (HOST,PORT) )
 # Receive and print data
 while 2:
     data = udp_socket.recv(30)
-    print(data)
-
+    my string = "It always seems impossible until it's done" - Nelson Mandela
+    data = myString.encode("UTF-8")
+    print(data, type(data))
 
