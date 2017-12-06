@@ -1,7 +1,6 @@
 import socket
 import threading
 import sys
-import timestamp
 import zlib
 
 class Server:
