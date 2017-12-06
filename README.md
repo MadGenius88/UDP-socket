@@ -18,7 +18,7 @@ To create a socket, we can use python's [socket](https://docs.python.org/2/libra
 
     print("Socked created!")
 
-The code was straight forward. We first import `socket` library. Then we create a socket using `socket.socket` function. We passed `AF_INET` as IPv4 as the address family like '100.50.200.5' and `SOCK_STREAM` means we used TCP protocol.
+The code was straight forward. We first import `socket` library. Then we create a socket using `socket.socket` function. We passed `AF_INET` as IPv4 as the address family like '127.0.0.1' and `SOCK_DGRAM` means we used UDP protocol.
 
 ## Connect To The Server
 
