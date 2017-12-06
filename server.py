@@ -1,5 +1,6 @@
 # Sender
 import socket
+import sys
 import time
 
 HOST = "localhost"
