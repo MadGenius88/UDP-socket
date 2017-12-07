@@ -13,7 +13,8 @@ BUFFER  = 64536
 print "UDP target IP:", UDP_IP
 print "UDP target port:", UDP_PORT
 print "message:", MESSAGE
- 
+
+# Alder32 
 sock = socket.socket(socket.AF_INET, # Internet
                       socket.SOCK_DGRAM) # UDP
 sock.sendto(MESSAGE, (UDP_IP, UDP_PORT))
@@ -30,4 +31,13 @@ while 2:
     my string = "It always seems impossible until it's done" - Nelson Mandela
     data = myString.encode("UTF-8")
     print(data, type(data))
+
+# Payload size
+with open('payloadfile.bin') as op:
+    payload = pickle.load(op)
+
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
+for i in payload:
+    sock.sentto(payload, ('127.0.0.1',5005))
 
