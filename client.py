@@ -18,6 +18,8 @@ sock = socket.socket(socket.AF_INET, # Internet
                       socket.SOCK_DGRAM) # UDP
 sock.sendto(MESSAGE, (UDP_IP, UDP_PORT))
 
+def checksum = sum(bytearray(b)"UTF-4")
+
 # Receive and print data
 while 2:
     data = udp_socket.recv(30)
