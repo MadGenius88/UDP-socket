@@ -4,7 +4,7 @@ import socket
 # Set up receiving socket UDP
 UDP_IP = "127.0.0.1"
 UDP_PORT = 5005
-MESSAGE = "Hello, World!"
+MESSAGE = "It always seems impossible until it's done - Nelson Mandela"
  
 print "UDP target IP:", UDP_IP
 print "UDP target port:", UDP_PORT
