@@ -1,34 +1,30 @@
+import time
+from socket import *
 
-
-pings = 1
-
-#Send ping 10 times 
-while pings < 11:  
-
-    #Create a UDP socket
+Class Client 
+    for pings in range(10):
     clientSocket = socket(AF_INET, SOCK_DGRAM)
-
-    #Set a timeout value of 1 second
     clientSocket.settimeout(1)
-
-    #Ping to server
     message = 'test'
-
     addr = ("127.0.0.1", 12000)
 
-    #Send ping
     start = time.time()
     clientSocket.sendto(message, addr)
-
-    #If data is received back from server, print 
     try:
         data, server = clientSocket.recvfrom(1024)
         end = time.time()
         elapsed = end - start
-        print data + " " + pings + " "+ elapsed        
-
-    #If data is not received back from server, print it has timed out  
+        print '%s %d %d' % (data, pings, elapsed)
     except timeout:
         print 'REQUEST TIMED OUT'
+        
+ Class Server
+     serverSocket = socket(AF_INET, SOCK_DGRAM)
+serverSocket.bind(('', 12000))
 
-    pings = pings - 1
+while True:
+    rand = random.randint(0, 10)
+    message, address = serverSocket.recvfrom(1024)
+    message = message.upper()
+    if rand >= 4:
+        serverSocket.sendto(message, address)
