@@ -1,7 +1,7 @@
 import time
 from socket import *
 
-Class Client 
+class Client 
     for pings in range(10):
     clientSocket = socket(AF_INET, SOCK_DGRAM)
     clientSocket.settimeout(1)
@@ -18,7 +18,7 @@ Class Client
     except timeout:
         print 'REQUEST TIMED OUT'
         
- Class Server
+ class Server
      serverSocket = socket(AF_INET, SOCK_DGRAM)
 serverSocket.bind(('', 12000))
 
