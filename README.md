@@ -27,3 +27,21 @@ After creating a socket, we now able to connect to the server via a certain port
 ### Get IP Address From The Host
 
 It's simple. We can use `gethostbyname` function to get IP address from hostname.
+
+## UDP Client/Server Outline:
+Create a UDP client & server in either Go, Node.js, or Python
+It should have a command line flag that specifies the port and another flag to specify what host:port it should connect and send data to
+This can be one application, that can act as either server/client, or two separate applications
+Send one IPv4 UDP packet every two seconds with a payload of data
+In the payload, byte encode the string `"It always seems impossible until it's done" - Nelson Mandela` along with a timestamp and the IPv4 address and port the sender is listening on
+The payload of data should not exceed the default UDP MTU size (64k) and should be structured like this:
+checksum (Adler32) - 4 bytes
+unix timestamp - 8 bytes
+ipv4 - 4 bytes
+port - 2 bytes
+Nelson Mandela quote
+When the packet is received
+Print the quote
+Print the time elapsed since the message was sent
+Print the source IPv4 address
+Print how many times that source IP sent a message
