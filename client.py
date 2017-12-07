@@ -18,6 +18,10 @@ sock = socket.socket(socket.AF_INET, # Internet
                       socket.SOCK_DGRAM) # UDP
 sock.sendto(MESSAGE, (UDP_IP, UDP_PORT))
 
+def test_adler32start(self):
+        self.assertEqual(zlib.adler32(""), zlib.adler32("", 1))
+        self.assert_(zlib.adler32("abc", 0xffffffff))
+
 def checksum = sum(bytearray(b)"UTF-4")
 
 # Receive and print data
