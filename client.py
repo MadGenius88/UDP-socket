@@ -5,6 +5,10 @@ import socket
 UDP_IP = "127.0.0.1"
 UDP_PORT = 5005
 MESSAGE = "It always seems impossible until it's done - Nelson Mandela"
+MAX_FAILS_SENDING = 10
+MTU_DISCOVERY_SEQ = 0 # the Sequence number sending MTU discovery messages
+TIMEOUT = 0.0005
+BUFFER  = 64536
  
 print "UDP target IP:", UDP_IP
 print "UDP target port:", UDP_PORT
