@@ -28,7 +28,7 @@ def handler(c, a):
         time.sleep(1)
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-sock.bind('127.0.0.1',4545)
+sock.bind('127.0.0.1',5005)
 
 while 1:
     packet = sock.recvfrom(65565)
