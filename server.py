@@ -1,6 +1,6 @@
 # Sender
 import socket, sys, time
-from struct import *
+from struct threading *
 
 # Set up our sending socket UDP
 UDP_IP = "127.0.0.1"
