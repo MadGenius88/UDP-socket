@@ -13,6 +13,15 @@ BUFFER  = 64536
 print "UDP target IP:", UDP_IP
 print "UDP target port:", UDP_PORT
 
+def sendPacket(data,sock,data_size):
+    packets = ["%s"%data[i:i+data_size] for i in range(0,len(data),data_size)]
+    packets[-1] = packets[-1] + "\x00"*(len(data)%data_size)
+    for p in packets:
+        sock.sendto(p,*ADDRINFO)
+
+sendPacket("hello",sock,120)
+sendPacket(""sock,120)
+
 # Elaspsed time 
    for pings in range(10):
     clientSocket = socket(AF_INET, SOCK_DGRAM)
