@@ -15,6 +15,23 @@ print "UDP target IP:", UDP_IP
 print "UDP target port:", UDP_PORT
 print "message:", MESSAGE
 
+# Elaspsed time 
+   for pings in range(10):
+    clientSocket = socket(AF_INET, SOCK_DGRAM)
+    clientSocket.settimeout(1)
+    message = 'test'
+    addr = ("127.0.0.1", 12000)
+
+    start = time.time()
+    clientSocket.sendto(message, addr)
+    try:
+        data, server = clientSocket.recvfrom(1024)
+        end = time.time()
+        elapsed = end - start
+        print '%s %d %d' % (data, pings, elapsed)
+    except timeout:
+        print 'REQUEST TIMED OUT'
+
 # Checksum functions needed for calculation checksum
 sock = socket.socket(socket.AF_INET, # Internet
                       socket.SOCK_DGRAM) # UDP
