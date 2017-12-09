@@ -19,8 +19,8 @@ def sendPacket(data,sock,data_size):
     for p in packets:
         sock.sendto(p,*ADDRINFO)
 
-sendPacket("hello",sock,120)
-sendPacket(""sock,120)
+sendPacket("",sock,120)
+sendPacket("",sock,120)
 
 # Elaspsed time 
    for pings in range(10):
