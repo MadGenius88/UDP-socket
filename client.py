@@ -17,7 +17,7 @@ print "UDP target port:", UDP_PORT
    for pings in range(10):
     clientSocket = socket(AF_INET, SOCK_DGRAM)
     clientSocket.settimeout(1)
-    message = 'test'
+    message = 'LAST MESSAGE SENT'
     addr = ("127.0.0.1", 12000)
 
     start = time.time()
@@ -28,9 +28,9 @@ print "UDP target port:", UDP_PORT
         elapsed = end - start
         print '%s %d %d' % (data, pings, elapsed)
     except timeout:
-        print 'REQUEST TIMED OUT'
+        print 'REQUEST TIMEOUT'
 
-# Checksum functions needed for calculation checksum
+# Functions needed for calculation checksum
 sock = socket.socket(socket.AF_INET, # Internet
                       socket.SOCK_DGRAM) # UDP
 sock.sendto(bytes(MESSAGE), (UDP_IP, UDP_PORT))
