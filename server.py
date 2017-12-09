@@ -14,11 +14,16 @@ while True:
   data, addr = sock.recvfrom(1024) # buffer size is 1024 bytes
   print "received message:", data
         
-class server
-        s = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
-        s.bind( (HOST,PORT) )
-        
-connections = []
+# Elapsed time
+serverSocket = socket(AF_INET, SOCK_DGRAM)
+serverSocket.bind(('', 12000))
+
+while True:
+    rand = random.randint(0, 10)
+    message, address = serverSocket.recvfrom(1024)
+    message = message.upper()
+    if rand >= 4:
+        serverSocket.sendto(message, address)
 
 # Send packet to the receiver
 def handler(c, a):
