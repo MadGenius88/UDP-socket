@@ -9,9 +9,6 @@ MAX_FAILS_SENDING = 10
 MTU_DISCOVERY_SEQ = 0 # the Sequence number sending MTU discovery messages
 TIMEOUT = 0.0002
 BUFFER  = 64536
- 
-print "UDP target IP:", UDP_IP
-print "UDP target port:", UDP_PORT
 
 def sendPacket(data,sock,data_size):
     packets = ["%s"%data[i:i+data_size] for i in range(0,len(data),data_size)]
