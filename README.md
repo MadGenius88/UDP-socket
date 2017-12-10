@@ -1,6 +1,8 @@
 # Python UDP-socket
 Simple UDP server/client socket communication
 
+[![UDP Communication][3]][4]
+
 ## Introduction
 
 Sockets are fundamentals. It's behind any kind of network communication done by the computers. It's the backbone behind world wide web. For example when you type "www.google.com" in your web browser, it will open a socket and connect to google.com to get a web page and show it to you in HTML format. Similar to chat client like google hangout, yahoo messenger or skype.
