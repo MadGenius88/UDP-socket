@@ -6,11 +6,9 @@ class Socket_Client:
 
     def __init__(self,type, port):
         self.server_address = (socket.gethostname(), port)
-        if type.upper() == "TCP":
-            self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        if type.upper() == "UDP":
+            self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
             self.sock.connect(self.server_address)
-        else:
-            self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # UDP
 
     def get_udp(self,message):
         self.sock.sendto(message.encode(encoding='utf_8'),self.server_address)
@@ -18,7 +16,7 @@ class Socket_Client:
         self.sock.close()
         return data.decode()
 
-    def get_tcp(self,message):
+    def get_udp(self,message):
         self.sock.sendall(message.encode(encoding='utf_8'))
         response = self.sock.recv(1024).decode()
         self.sock.close()
