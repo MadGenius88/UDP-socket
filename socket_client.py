@@ -41,7 +41,7 @@ class Socket_Client:
     def manage_client_requests(self):
         try:
             # Send data
-            message = 'This is the message.  It will be repeated.'
+            message = 'It always seems impossible until it's done" - Nelson Mandela'
             print('sending "%s"' % message)
             self.sock.sendall(message.encode(encoding='utf_8'))
 
@@ -58,4 +58,4 @@ class Socket_Client:
             print('closing socket')
             self.sock.close()
 
-#newClient = Socket_Client('192.168.223.1',6868,"TCP")
+#newClient = Socket_Client('127.0.0.1',6868,"UDP")
