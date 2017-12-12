@@ -22,7 +22,7 @@ class Socket_Client:
         self.sock.close()
         return response
 
-    def send_file_udp(self,message,filename):
+    def send_filename_udp(self,message,filename):
         self.sock.sendto(message.encode(encoding='utf_8'), self.server_address)
         data, address = self.sock.recvfrom(1024)
         print(data)
