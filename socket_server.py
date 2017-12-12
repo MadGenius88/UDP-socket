@@ -25,10 +25,12 @@ class Socket_Server:
         files = " ".join(str(x) for x in dirs)
         return files
 
-    def get_time(self,country):
-        g = geocoders.GoogleV3()
-        place, (lat, lng) = g.geocode(country)
-        timezone = g.timezone((lat, lng))  # return pytz timezone object
+    def get_sendPacket(data,sock,data_size):
+        packets = ["%s"%data[i:i+data_size] for i in range(0,len(data),data_size)]
+        packets[-1] = packets[-1] + "\x00"*(len(data)%data_size)
+        for p in packets:
+        sock.sendto(p,*ADDRINFO)
+        print(sendPacket("data",sock,120))
         now = datetime.now(pytz.timezone(timezone.zone))
         return now.ctime()
 
@@ -43,15 +45,17 @@ class Socket_Server:
             data, address = self.sock.recvfrom(1024)
             data,param = self.get_command_and_param(data)
             if data == "hostname":
-                self.sock.sendto(socket.gethostname().encode(encoding='utf_8'), address)
+                self.sock.sendto(socket.gethostname().encode(encoding='utf_4'), address)
             elif data == "server-ip":
-                self.sock.sendto(self.server_ip.encode(encoding='utf_8'), address)
-            elif data == "list-files":
-                self.sock.sendto(self.list_files().encode(encoding='utf_8'), address)
+                self.sock.sendto(self.server_ip.encode(encoding='utf_2'), address)
+            elif data == "list-messages":
+                self.sock.sendto(self.list_messages().encode(encoding='utf_8'), address)
+            elif data == "checksum":
+                self.sock.sendto(self.get_checksum(param).encode(encoding='utf_4'), address)
             elif data == "time":
                 self.sock.sendto(self.get_time(param).encode(encoding='utf_8'), address)
-            elif data == "upload":
-                self.sock.sendto(self.get_time(param).encode(encoding='utf_8'), address)
+            elif data == "timestamp":
+                self.sock.sendto(self.get_(param).encode(encoding='utf_8'), address)
                 print("goit")
                 # data, addr = self.sock.recvfrom(1024)
                 # f = open(data.decode(), 'wb')
@@ -63,14 +67,14 @@ class Socket_Server:
                 #         f.write(data)
                 #         self.sock.settimeout(2)
                 #         data, addr = self.sock.recvfrom(1024)
-                #     print("File Downloaded")
+                #     print("Message Sent")
                 # except socket.timeout:
                 #     f.close()
                 #     self.sock.close()
-                #     print("File Downloaded")
+                #     print("Message Recieved")
 
 
-    def manage_conections_tcp(self):
+    def manage_conections_udp(self):
 
         while True:
             # Wait for a connection
@@ -84,11 +88,13 @@ class Socket_Server:
                     data = connection.recv(1024)
                     data, param = self.get_command_and_param(data)
                     if data == "hostname":
-                        connection.sendall(socket.gethostname().encode(encoding='utf_8'))
+                        connection.sendall(socket.gethostname().encode(encoding='utf_4'))
                     elif data == "server-ip":
-                        connection.sendall(self.server_ip.encode(encoding='utf_8'))
-                    elif data == "list-files":
-                        connection.sendall(self.list_files().encode(encoding='utf_8'))
+                        connection.sendall(self.server_ip.encode(encoding='utf_2'))
+                    elif data == "list-messages":
+                        connection.sendall(self.list_messages().encode(encoding='utf_8'))
+                    elif data == "checksum":
+                        connection.sendall(self.get_checksum(param).encode(encoding='utf_4')
                     elif data == "time":
                         connection.sendall(self.get_time(param).encode(encoding='utf_8'))
                     else:
@@ -100,4 +106,4 @@ class Socket_Server:
                 connection.close()
 
 
-#newSoc = Socket_Server("TCP",6868);
+#newSoc = Socket_Server("UDP",6868);
