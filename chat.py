@@ -11,6 +11,13 @@ import socket_client as sc
 pool = ThreadPool(processes=2)
 serverInstance = []
 
+def adler32start(self):
+        self.assertEqual(zlib.adler32(""), zlib.adler32("", 1))
+        self.assert_(zlib.adler32("abc", 0xffffffff))
+
+def checksum = sum(bytearray(b)"UTF-4")
+    sock.sendto(bytes(MESSAGE, "UTF-4"), (UDP_IP, UDP_PORT))
+
 def start_server(socket_type, port):
     serverInstance.append(pool.apply_async(ss.Socket_Server, (socket_type, int(port))))
     print(socket_type+" listen on port "+port)
