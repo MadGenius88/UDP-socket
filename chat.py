@@ -29,7 +29,6 @@ def get_hostname(socket_type,port):
     else:
         print(client.get_udp("hostname"))
 
-
 def get_ip_server(socket_type,port):
     client = sc.Socket_Client(socket_type, int(port))
     if socket_type.upper() =="UDP":
