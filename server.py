@@ -14,16 +14,7 @@ class Socket_Server:
         self.server_ip = socket.gethostbyname(socket.getfqdn())
         self.unknown_command_error = "Unknown command"
 
-        if type.upper() == "TCP":
-            # Create a TCP/IP socket
-            self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            # Bind the socket to the port
-            self.sock.bind(self.server_address)
-            # Listen for incoming connections
-            self.sock.listen(1)
-            # manage new conections for server tcp
-            self.manage_conections_tcp()
-        else:
+        if type.upper() == "UDP":
             # Create UDP socket
             self.sock = socket.socket(socket.AF_INET,socket.SOCK_DGRAM) # UDP
             self.sock.bind(self.server_address)
